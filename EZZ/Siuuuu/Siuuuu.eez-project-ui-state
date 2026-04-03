@@ -1,0 +1,1266 @@
+{
+  "navigation": {
+    "selectedUserPageObject": "[Siuuuu.eez-project]:/userPages/2",
+    "selectedActionObject": "[Siuuuu.eez-project]:/actions/0",
+    "selectedGlobalVariableObject": "[Siuuuu.eez-project]:/variables/globalVariables/26",
+    "selectedBitmapObject": "[Siuuuu.eez-project]:/bitmaps/1",
+    "subnavigationSelectedItems": {
+      "variables-tab/sub-navigation/selected-item": "Actions"
+    }
+  },
+  "layoutModel": {
+    "rootEditor": {
+      "version": 115,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [
+          {
+            "type": "border",
+            "location": "top",
+            "children": []
+          },
+          {
+            "type": "border",
+            "size": 240,
+            "location": "right",
+            "children": [
+              {
+                "type": "tab",
+                "id": "styles",
+                "name": "Styles",
+                "component": "styles",
+                "enableClose": false,
+                "icon": "material:format_color_fill"
+              },
+              {
+                "type": "tab",
+                "id": "fonts",
+                "name": "Fonts",
+                "component": "fonts",
+                "enableClose": false,
+                "icon": "material:font_download"
+              },
+              {
+                "type": "tab",
+                "id": "bitmaps",
+                "name": "Bitmaps",
+                "component": "bitmaps",
+                "enableClose": false,
+                "icon": "material:image"
+              },
+              {
+                "type": "tab",
+                "id": "themes",
+                "name": "Themes",
+                "component": "themesSideView",
+                "enableClose": false,
+                "icon": "svg:palette"
+              },
+              {
+                "type": "tab",
+                "id": "lvgl-groups",
+                "name": "Groups",
+                "component": "lvgl-groups",
+                "enableClose": false,
+                "icon": "material:view_compact"
+              },
+              {
+                "type": "tab",
+                "id": "BREAKPOINTS_PALETTE",
+                "name": "Breakpoints",
+                "component": "breakpointsPanel",
+                "enableClose": false,
+                "icon": "svg:breakpoints_panel"
+              }
+            ]
+          },
+          {
+            "type": "border",
+            "size": 258.09375,
+            "location": "bottom",
+            "children": [
+              {
+                "type": "tab",
+                "id": "CHECKS",
+                "name": "Checks",
+                "component": "checksMessages",
+                "enableClose": false
+              },
+              {
+                "type": "tab",
+                "id": "OUTPUT",
+                "name": "Output",
+                "component": "outputMessages",
+                "enableClose": false
+              },
+              {
+                "type": "tab",
+                "id": "SEARCH",
+                "name": "Search",
+                "component": "search",
+                "enableClose": false
+              },
+              {
+                "type": "tab",
+                "id": "REFERENCES",
+                "name": "References",
+                "component": "references",
+                "enableClose": false
+              }
+            ]
+          },
+          {
+            "type": "border",
+            "size": 240,
+            "location": "left",
+            "children": []
+          }
+        ],
+        "layout": {
+          "type": "row",
+          "id": "#e7bb584c-b5b2-4255-8e84-1be072001412",
+          "children": [
+            {
+              "type": "row",
+              "id": "#8aba580c-8856-4612-bc73-c16222241f85",
+              "weight": 20.51108997628346,
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#977d6fca-0ccd-4dbf-b5cb-c5c07da313b3",
+                  "weight": 0.7999999999999999,
+                  "enableClose": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "PAGES",
+                      "name": "Pages",
+                      "component": "pages",
+                      "enableClose": false,
+                      "icon": "svg:pages"
+                    },
+                    {
+                      "type": "tab",
+                      "id": "WIDGETS",
+                      "name": "User Widgets",
+                      "component": "widgets",
+                      "enableClose": false,
+                      "icon": "svg:user_widgets"
+                    },
+                    {
+                      "type": "tab",
+                      "id": "ACTIONS",
+                      "name": "User Actions",
+                      "component": "actions",
+                      "enableClose": false,
+                      "icon": "material:code"
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#5618f34f-2425-4b6c-93e9-10b1200f9df9",
+                  "weight": 1.2604651162790703,
+                  "enableClose": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#f49c7078-f646-4f60-99a7-edca609db1e9",
+                      "name": "Widgets Structure",
+                      "component": "flow-structure",
+                      "enableClose": false,
+                      "icon": "svg:hierarchy"
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#c57f0cde-974a-4c6f-b7f5-ed378ea17c66",
+                  "weight": 0.9395348837209306,
+                  "enableClose": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "VARIABLES",
+                      "name": "Variables",
+                      "component": "variables",
+                      "enableClose": false,
+                      "icon": "svg:variable"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tabset",
+              "id": "EDITORS",
+              "weight": 50.36524214948091,
+              "selected": 1,
+              "enableDeleteWhenEmpty": false,
+              "enableClose": false,
+              "children": [
+                {
+                  "type": "tab",
+                  "id": "#3f2ca0dd-5052-48ef-9820-eff9b2081d58",
+                  "name": "countdown_tick",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[Siuuuu.eez-project]:/actions/0",
+                    "permanent": false
+                  },
+                  "icon": "material:code"
+                },
+                {
+                  "type": "tab",
+                  "id": "#dba0558a-e248-4ed1-bc11-0b3b293772be",
+                  "name": "MENU",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[Siuuuu.eez-project]:/userPages/2",
+                    "permanent": false
+                  },
+                  "icon": "svg:page"
+                }
+              ]
+            },
+            {
+              "type": "row",
+              "id": "#d890785a-eff4-46ce-8a78-d23c8e439ec2",
+              "weight": 29.123667874235643,
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#e055d077-5a3d-4ac7-b3ed-9fc9dad11bf0",
+                  "weight": 2.1952789699570814,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "PROPERTIES",
+                      "name": "Properties",
+                      "component": "propertiesPanel",
+                      "enableClose": false,
+                      "icon": "svg:properties"
+                    }
+                  ],
+                  "active": true
+                },
+                {
+                  "type": "tabset",
+                  "id": "#8940cb3c-e5a6-4389-8cd6-47f601295e72",
+                  "weight": 0.8047210300429185,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "COMPONENTS_PALETTE",
+                      "name": "Components Palette",
+                      "component": "componentsPalette",
+                      "enableClose": false,
+                      "icon": "svg:components"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "rootEditorForIEXT": {
+      "version": 5,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [
+          {
+            "type": "border",
+            "location": "top",
+            "children": []
+          },
+          {
+            "type": "border",
+            "size": 240,
+            "location": "right",
+            "children": []
+          },
+          {
+            "type": "border",
+            "location": "bottom",
+            "children": [
+              {
+                "type": "tab",
+                "id": "CHECKS",
+                "name": "Checks",
+                "component": "checksMessages",
+                "enableClose": false
+              },
+              {
+                "type": "tab",
+                "id": "OUTPUT",
+                "name": "Output",
+                "component": "outputMessages",
+                "enableClose": false
+              },
+              {
+                "type": "tab",
+                "id": "SEARCH",
+                "name": "Search",
+                "component": "search",
+                "enableClose": false
+              },
+              {
+                "type": "tab",
+                "id": "REFERENCES",
+                "name": "References",
+                "component": "references",
+                "enableClose": false
+              }
+            ]
+          },
+          {
+            "type": "border",
+            "size": 240,
+            "location": "left",
+            "children": []
+          }
+        ],
+        "layout": {
+          "type": "row",
+          "id": "#3dc083a8-f8dc-4c7b-8a78-932ebf0231e4",
+          "children": [
+            {
+              "type": "tabset",
+              "id": "#a606bf88-3a99-4cfa-822d-4632f59b2e55",
+              "weight": 0,
+              "enableClose": false,
+              "children": [
+                {
+                  "type": "tab",
+                  "id": "iext",
+                  "name": "IEXT",
+                  "component": "extension-definitions",
+                  "enableClose": false,
+                  "icon": "material:extension"
+                }
+              ]
+            },
+            {
+              "type": "tabset",
+              "id": "EDITORS",
+              "weight": 1,
+              "selected": -1,
+              "enableDeleteWhenEmpty": false,
+              "enableClose": false,
+              "children": []
+            },
+            {
+              "type": "tabset",
+              "id": "#8737bb2c-4572-4760-8a08-a4d5e83e9e6b",
+              "weight": 0,
+              "children": [
+                {
+                  "type": "tab",
+                  "id": "PROPERTIES",
+                  "name": "Properties",
+                  "component": "propertiesPanel",
+                  "enableClose": false,
+                  "icon": "svg:properties"
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "rootRuntime": {
+      "version": 54,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#625dd977-1a74-4a81-8a74-0fd68b788e6c",
+          "children": [
+            {
+              "type": "row",
+              "id": "#0f5da013-3582-4cb8-adc4-131ea4cca558",
+              "weight": 0.5369512190624456,
+              "width": 487,
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#dcbd55b6-42d6-49f8-afc2-22abd36c7896",
+                  "weight": 0.46153846153846145,
+                  "selected": 2,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "PAGES",
+                      "name": "Pages",
+                      "component": "pages",
+                      "enableClose": false,
+                      "icon": "svg:pages"
+                    },
+                    {
+                      "type": "tab",
+                      "id": "WIDGETS",
+                      "name": "User Widgets",
+                      "component": "widgets",
+                      "enableClose": false,
+                      "icon": "svg:user_widgets"
+                    },
+                    {
+                      "type": "tab",
+                      "id": "ACTIONS",
+                      "name": "User Actions",
+                      "component": "actions",
+                      "enableClose": false,
+                      "icon": "material:code"
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#8c253ef4-4136-4646-bfd6-feaea7f10eec",
+                  "weight": 0.14201183431952658,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#f296cbae-7c24-4fc2-b4da-82fa3c7642c1",
+                      "name": "Active Flows",
+                      "component": "active-flows",
+                      "enableClose": false,
+                      "icon": "svg:active_flows_panel"
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#013d2951-88fc-40d5-99a4-b7373c548e5c",
+                  "weight": 3.3964497041420105,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#05bd5151-f121-4d46-bad2-cf90f20c8bed",
+                      "name": "Watch",
+                      "component": "watch",
+                      "enableClose": false,
+                      "icon": "svg:watch_panel"
+                    }
+                  ]
+                }
+              ]
+            },
+            {
+              "type": "tabset",
+              "id": "RUNTIME-EDITORS",
+              "weight": 0.26503956845676946,
+              "enableDeleteWhenEmpty": false,
+              "enableClose": false,
+              "children": [
+                {
+                  "type": "tab",
+                  "id": "#fa260da6-05e4-4d4b-a53c-f200d90a7ece",
+                  "name": "MENU",
+                  "component": "editor",
+                  "config": {
+                    "objectPath": "[Siuuuu.eez-project]:/userPages/2",
+                    "permanent": false
+                  },
+                  "icon": "svg:page"
+                }
+              ],
+              "active": true
+            },
+            {
+              "type": "row",
+              "id": "#874a5e91-944c-4e3d-8eb6-ebe99f056014",
+              "weight": 0.19800921248078418,
+              "width": 257,
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#286c9310-115d-4c49-9cf6-9c7b36e7c9cf",
+                  "weight": 1,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#89d6643a-2ae5-4f01-8d65-e05db6bb336d",
+                      "name": "Queue",
+                      "component": "queue",
+                      "enableClose": false,
+                      "icon": "svg:queue_panel"
+                    },
+                    {
+                      "type": "tab",
+                      "id": "BREAKPOINTS_PALETTE",
+                      "name": "Breakpoints",
+                      "component": "breakpointsPanel",
+                      "enableClose": false,
+                      "icon": "svg:breakpoints_panel"
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#abab7fca-e714-408c-a528-1baba0366c57",
+                  "weight": 2,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "DEBUGGER_LOGS",
+                      "name": "Logs",
+                      "component": "logs",
+                      "enableClose": false,
+                      "icon": "svg:log"
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "bitmaps": {
+      "version": 2,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#57921115-e9ca-4ee3-b62e-5f5b6fc14d02",
+          "children": [
+            {
+              "type": "row",
+              "id": "#0ff7465a-a0a2-4f0f-8783-3d2af1612a5e",
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#897f0d6e-112b-46da-b925-2acb51a981b9",
+                  "weight": 75,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#848f040f-b0ae-4f91-8ce1-d77ed6bea708",
+                      "name": "Bitmaps",
+                      "component": "bitmaps",
+                      "enableClose": false
+                    }
+                  ],
+                  "active": true
+                },
+                {
+                  "type": "tabset",
+                  "id": "#06d725ac-b365-46c6-a582-0d32e63bad9f",
+                  "weight": 25,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#82e66ad8-9e05-42d7-98f8-043d86a8f8eb",
+                      "name": "Preview",
+                      "component": "preview",
+                      "enableClose": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "fonts": {
+      "version": 1,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#35441184-f71e-498d-9acf-4c9eb315c78f",
+          "children": [
+            {
+              "type": "tabset",
+              "id": "#7d23b649-9bc5-4880-8462-93fe2b884c7c",
+              "enableDrop": false,
+              "enableDrag": false,
+              "enableClose": false,
+              "enableTabStrip": false,
+              "children": [
+                {
+                  "type": "tab",
+                  "id": "#631dfafa-098b-41c1-8bca-ba767e1b096e",
+                  "component": "glyphs",
+                  "enableClose": false
+                }
+              ]
+            },
+            {
+              "type": "tabset",
+              "id": "#93b1a3a0-eb6a-41f1-b147-89fd7fbd3306",
+              "enableDrop": false,
+              "enableDrag": false,
+              "enableClose": false,
+              "enableTabStrip": false,
+              "children": [
+                {
+                  "type": "tab",
+                  "id": "#7f251958-605e-4816-a331-d5a2c36a842b",
+                  "component": "editor",
+                  "enableClose": false
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "scpi": {
+      "version": 3,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#256645e0-66ae-4fb6-9109-38ed37af88a2",
+          "children": [
+            {
+              "type": "row",
+              "id": "#8c27dad1-79fc-40cc-979a-bcbd147f6ecc",
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#96755143-1755-4770-967d-d359ee080b1a",
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "SCPI_SUBSYSTEMS",
+                      "name": "Subsystems",
+                      "component": "subsystems",
+                      "enableClose": false
+                    },
+                    {
+                      "type": "tab",
+                      "id": "SCPI_ENUMS",
+                      "name": "Enums",
+                      "component": "enums",
+                      "enableClose": false
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#a9b535b7-e0eb-44ef-abfe-adb1f951cefe",
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "SCPI_COMMANDS",
+                      "name": "Commands",
+                      "component": "commands",
+                      "enableClose": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "styles": {
+      "version": 2,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#ad8c8ad3-de7f-45e0-96b8-1f4746d52692",
+          "children": [
+            {
+              "type": "row",
+              "id": "#f6fef818-e1e8-4ab2-ba55-83c8da456174",
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#98d7b5cc-c121-4612-a107-871c06682779",
+                  "weight": 75,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#e9e8ece5-d671-4254-911a-456ada0d4333",
+                      "name": "Styles",
+                      "component": "styles",
+                      "enableClose": false
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#f764db70-0eaa-4e84-a2e0-cbbfbd149498",
+                  "weight": 25,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#a64a502e-2985-4c05-88b3-b4da3eef31d3",
+                      "name": "Preview",
+                      "component": "preview",
+                      "enableClose": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "lvglStyles": {
+      "version": 1,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#eaf7ed47-7338-4fec-95cb-6c3c9a145898",
+          "children": [
+            {
+              "type": "row",
+              "id": "#f7a9a575-874c-4694-9b54-ff480c77acb3",
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#05211eb9-e90e-45ca-b6c5-d8ab9fdf7deb",
+                  "weight": 75,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#c3a967b3-b039-472b-9269-04cdb95a2db8",
+                      "name": "Styles",
+                      "component": "styles",
+                      "enableClose": false
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#ea469f7c-037a-4aee-b8b5-2a9a0780c7ea",
+                  "weight": 25,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#c2be17d1-2423-41ed-aa6b-3fe88f7fef8e",
+                      "name": "Preview",
+                      "component": "preview",
+                      "enableClose": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "themes": {
+      "version": 1,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#f8c656cf-c115-47e2-adb9-a2fce5d7ddba",
+          "children": [
+            {
+              "type": "row",
+              "id": "#26be7743-7f9f-44dd-b66a-d2cbe1f66f4a",
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#4a3ac6a6-dbdb-483e-8af7-8d173db77541",
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#bffaab64-e5e8-4594-9399-f079e0c9b91a",
+                      "component": "themes",
+                      "enableClose": false
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#a754ec86-ff96-47cf-a0ba-c065e4277abc",
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": false,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#37d84baa-610a-4f5d-9d43-0276b29eaef8",
+                      "component": "colors",
+                      "enableClose": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "texts": {
+      "version": 7,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#0f4e65d4-e95c-478c-b74a-2a504d6234cd",
+          "children": [
+            {
+              "type": "row",
+              "id": "#2d6f531f-9563-4209-8aec-cc2e69e7a3ff",
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#b9d8257a-c829-4107-8ab9-a45a3da862b7",
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "TEXT_RESOURCES",
+                      "name": "Text resources",
+                      "component": "resources",
+                      "enableClose": false
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#6d9f2882-9b87-429d-b282-3cc651df3419",
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "LANGUAGES",
+                      "name": "Languages",
+                      "component": "languages",
+                      "enableClose": false
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#6280b577-a561-4a06-8323-b33f0f54bc9f",
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "TEXTS_STATISTICS",
+                      "name": "Statistics",
+                      "component": "statistics",
+                      "enableClose": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "lvglGroups": {
+      "version": 3,
+      "json": {
+        "global": {
+          "splitterSize": 4,
+          "splitterExtra": 4,
+          "tabEnableRename": false,
+          "borderEnableAutoHide": true
+        },
+        "borders": [],
+        "layout": {
+          "type": "row",
+          "id": "#6b1bd7a7-70c9-4170-b588-37f53d915552",
+          "children": [
+            {
+              "type": "row",
+              "id": "#2cb26d21-821e-45c6-ab92-2feaac3f602a",
+              "children": [
+                {
+                  "type": "tabset",
+                  "id": "#f420cd58-60d2-4e0c-8d4d-299d2a25ad8d",
+                  "weight": 50,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": true,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#e2172aca-a008-4b5c-9c67-ef66d93bcdb2",
+                      "name": "Groups",
+                      "component": "groups",
+                      "enableClose": false
+                    }
+                  ]
+                },
+                {
+                  "type": "tabset",
+                  "id": "#cc3ead19-32b9-49a0-b21f-ce8e4e4baa05",
+                  "weight": 50,
+                  "enableDrop": false,
+                  "enableDrag": false,
+                  "enableClose": false,
+                  "enableTabStrip": true,
+                  "children": [
+                    {
+                      "type": "tab",
+                      "id": "#5daf01db-0fc9-420a-9b8e-eb79f6c768b6",
+                      "name": "Group Widgets",
+                      "component": "order",
+                      "enableClose": false
+                    }
+                  ]
+                }
+              ]
+            }
+          ]
+        }
+      }
+    }
+  },
+  "selectedBuildConfiguration": "Default",
+  "features": {},
+  "objects": {
+    "[Siuuuu.eez-project]:/userPages/0[flow-state]": {
+      "selection": {
+        "0": {
+          "0": {
+            "$selected": true
+          }
+        },
+        "1": {},
+        "4": {}
+      },
+      "transform": {
+        "translate": {
+          "x": -130.83332195281986,
+          "y": -189.1666561126708
+        },
+        "scale": 0.8
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[Siuuuu.eez-project]:/userPages/1[flow-state]": {
+      "selection": {
+        "0": {
+          "0": {},
+          "1": {
+            "0": {}
+          },
+          "2": {
+            "0": {}
+          },
+          "3": {},
+          "4": {}
+        },
+        "2": {}
+      },
+      "transform": {
+        "translate": {
+          "x": -337.35653617514953,
+          "y": -278.1395902680617
+        },
+        "scale": 0.8
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[Siuuuu.eez-project]:/actions/0[flow-state]": {
+      "selection": {
+        "2": {}
+      },
+      "transform": {
+        "translate": {
+          "x": -129.791721153259,
+          "y": 74.27655982971193
+        },
+        "scale": 0.75
+      }
+    },
+    "[Siuuuu.eez-project]:/userPages/2[flow-state]": {
+      "selection": {
+        "0": {
+          "0": {},
+          "2": {},
+          "4": {},
+          "5": {},
+          "8": {
+            "$selected": true
+          },
+          "10": {},
+          "14": {
+            "0": {}
+          },
+          "15": {},
+          "16": {
+            "0": {},
+            "1": {}
+          },
+          "17": {},
+          "18": {},
+          "19": {},
+          "20": {},
+          "21": {}
+        }
+      },
+      "transform": {
+        "translate": {
+          "x": -237.71930649147004,
+          "y": -154.5014081192016
+        },
+        "scale": 0.8
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[Siuuuu.eez-project]:/actions/1[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "scale": 1
+      }
+    },
+    "[Siuuuu.eez-project]:/actions/-1[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": 0,
+          "y": 0
+        },
+        "scale": 1
+      }
+    },
+    "[Siuuuu.eez-project]:/userPages/-1[flow-state]": {
+      "selection": {
+        "0": {}
+      },
+      "transform": {
+        "translate": {
+          "x": -4932.794108257908,
+          "y": -24281.59559778964
+        },
+        "scale": 0.8
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[Siuuuu.eez-project]:/userPages/3[flow-state]": {
+      "selection": {
+        "0": {
+          "0": {},
+          "2": {},
+          "8": {
+            "1": {
+              "1": {},
+              "$selected": true
+            },
+            "2": {}
+          },
+          "9": {
+            "1": {
+              "1": {}
+            }
+          },
+          "10": {},
+          "11": {}
+        },
+        "1": {}
+      },
+      "transform": {
+        "translate": {
+          "x": -107.66159632966219,
+          "y": -224.3823978701506
+        },
+        "scale": 0.8
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[Siuuuu.eez-project]:/userPages/4[flow-state]": {
+      "selection": {
+        "0": {
+          "8": {
+            "1": {
+              "0": {}
+            },
+            "2": {
+              "0": {}
+            },
+            "3": {
+              "0": {}
+            }
+          },
+          "9": {},
+          "10": {},
+          "11": {},
+          "12": {
+            "0": {},
+            "$selected": true
+          }
+        },
+        "46": {}
+      },
+      "transform": {
+        "translate": {
+          "x": -281.91243595121625,
+          "y": -459.66670303344773
+        },
+        "scale": 0.8
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    },
+    "[Siuuuu.eez-project]:/userPages/5[flow-state]": {
+      "selection": {},
+      "transform": {
+        "translate": {
+          "x": -120,
+          "y": -160
+        },
+        "scale": 1
+      },
+      "timeline": {
+        "isEditorActive": false,
+        "position": 0,
+        "secondToPx": 200,
+        "scrollLeft": 0
+      }
+    }
+  },
+  "activeOutputSection": 0,
+  "searchPattern": "",
+  "searchMatchCase": false,
+  "searchMatchWholeWord": false,
+  "replaceEnabled": false,
+  "replaceText": "",
+  "pageRuntimeFrontFace": true,
+  "breakpoints": {},
+  "watchExpressions": [
+    "LV_BUTTONMATRIX_CTRL.DISABLED"
+  ],
+  "showComponentDescriptions": true,
+  "logsPanelFilter": "all",
+  "selectedStylePropertyName": "",
+  "lvglPart": "MAIN",
+  "lvglState": "DEFAULT",
+  "lvglExpandedPropertiesGroup": [
+    "TEXT"
+  ],
+  "showInactiveFlowsInDebugger": true,
+  "globalFlowZoom": true,
+  "flowZoom": 0.8,
+  "implementationLanguage": "C"
+}
