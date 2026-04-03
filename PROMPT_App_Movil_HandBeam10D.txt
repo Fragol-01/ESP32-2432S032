@@ -1,0 +1,508 @@
+# PROMPT COMPLETO — App Móvil Fisser HandBeam 10D
+# Guardar este archivo como referencia antes de usarlo en cualquier IA generativa.
+# Fecha: Marzo 2026
+
+================================================================================
+CONTEXTO DEL HARDWARE — ESP32-2432S032 (LEER ANTES DE PROGRAMAR)
+================================================================================
+
+El dispositivo objetivo es el módulo ESP32-2432S032 con las siguientes
+especificaciones confirmadas por documentación oficial del fabricante:
+
+MICROCONTROLADOR:
+- Chip: ESP32-WROOM-32 (Espressif)
+- CPU: Dual-core Tensilica LX6, 240 MHz, 600 DMIPS
+- RAM: 520 KB SRAM
+- Flash: 4 MB
+- WiFi: 802.11 b/g/n HT40 integrado (2.4 GHz)
+- Bluetooth: BLE 4.2 + Classic integrado
+
+DISPLAY (no relevante para la app, pero sí para el firmware del ESP32):
+- Pantalla: ST7789 IPS 3.2" — 240×320 px — interface SPI
+- Touch: GT911 capacitivo — I2C — hasta 5 puntos
+
+CAPACIDADES WiFi CONFIRMADAS (por demos oficiales del fabricante):
+- Modo AP (Access Point): el ESP32 crea su propia red WiFi
+  → SSID configurable, contraseña configurable
+  → IP por defecto del AP: 192.168.4.1
+  → Hasta 4 clientes simultáneos
+- Modo STA (Station): el ESP32 se conecta a un router externo
+- Servidor TCP: puerto configurable, comunicación raw
+- Servidor HTTP: responde peticiones GET/POST como un servidor web estándar
+- Modo híbrido AP+STA: puede usarse simultáneamente
+
+PROTOCOLO ELEGIDO PARA ESTA APP: HTTP REST sobre WiFi
+Justificación basada en los demos oficiales:
+- El demo 4_7 del fabricante implementa un servidor HTTP completo en el ESP32
+  que responde peticiones GET con parámetros en la URL
+- El demo 4_4 muestra servidor TCP con lectura de datos del cliente
+- HTTP es compatible nativamente con cualquier framework móvil (Flutter, React Native)
+- No requiere librerías externas en el lado móvil
+- Las peticiones son texto plano (JSON), fáciles de parsear en el ESP32
+- Permite enviar múltiples parámetros en una sola petición
+
+================================================================================
+PROTOCOLO DE COMUNICACIÓN ESP32 ↔ APP
+================================================================================
+
+El ESP32 corre en MODO AP (Access Point):
+- SSID: "HandBeam10D"
+- Password: "laser2024" (configurable en el firmware)
+- IP del ESP32: 192.168.4.1
+- Puerto HTTP: 80
+
+El móvil se conecta a esa red WiFi y envía peticiones HTTP.
+
+ENDPOINT PRINCIPAL — Enviar parámetros de tratamiento:
+  POST http://192.168.4.1/tratamiento
+  Content-Type: application/json
+
+  Body JSON:
+  {
+    "tiempo": 180,
+    "rojo": true,
+    "violeta": false,
+    "infrarrojo": true,
+    "nm_rojo": 650,
+    "nm_violeta": 405,
+    "nm_infrarrojo": 850,
+    "afeccion": "Dolor articular"
+  }
+
+ENDPOINT — Consultar estado actual:
+  GET http://192.168.4.1/estado
+
+  Respuesta JSON del ESP32:
+  {
+    "estado": "corriendo",
+    "tiempo_restante": 120,
+    "tiempo_total": 180,
+    "rojo": true,
+    "violeta": false,
+    "infrarrojo": true
+  }
+
+ENDPOINT — Detener tratamiento:
+  POST http://192.168.4.1/detener
+
+ENDPOINT — Pausar tratamiento:
+  POST http://192.168.4.1/pausar
+
+ENDPOINT — Reanudar tratamiento:
+  POST http://192.168.4.1/reanudar
+
+ENDPOINT — Ping / verificar conexión:
+  GET http://192.168.4.1/ping
+  Respuesta: { "ok": true, "dispositivo": "HandBeam10D" }
+
+================================================================================
+PARÁMETROS CLÍNICOS DEL DISPOSITIVO (CONSTANTES)
+================================================================================
+
+LONGITUDES DE ONDA DEL FISSER HANDBEAM 10D:
+  - LED Rojo:       650 nm  (4 LEDs — superficial, circulación, piel)
+  - LED Violeta:    405 nm  (3 LEDs — antimicrobiano, dérmico)
+  - LED Infrarrojo: 850 nm  (3 LEDs — profundo, músculo, articulaciones)
+  - Potencia nominal: 40 mW por LED / máximo 400 mW total
+
+NOTA: Los valores en nm son FIJOS por hardware. La app los muestra como
+información informativa y los incluye en el JSON para que el ESP32 los
+registre en su log, pero no son parámetros configurables por el usuario.
+
+================================================================================
+PROMPT PARA GENERACIÓN DE LA APP MÓVIL — VERSIÓN COMPLETA
+================================================================================
+
+Copia todo el texto entre las líneas de ===== y úsalo como prompt en
+Claude, ChatGPT-4, Gemini o cualquier IA generativa de código.
+
+================================================================================
+INICIO DEL PROMPT
+================================================================================
+
+Eres un desarrollador senior de aplicaciones móviles multiplataforma con
+experiencia en IoT y comunicación WiFi con microcontroladores ESP32.
+Debes crear una aplicación móvil completa llamada "HandBeam Control" para
+el dispositivo médico de terapia láser de baja intensidad Fisser HandBeam 10D.
+
+=== PLATAFORMA ===
+
+Desarrolla la app en Flutter (Dart) para Android e iOS.
+Usa las siguientes dependencias en pubspec.yaml:
+  - http: ^1.2.0               (peticiones HTTP al ESP32)
+  - provider: ^6.1.0           (gestión de estado)
+  - shared_preferences: ^2.2.0 (guardar última IP usada)
+  - lottie: ^3.0.0             (animaciones de carga/progreso)
+  - percent_indicator: ^4.2.3  (barra de progreso del tratamiento)
+  - flutter_svg: ^2.0.9        (íconos en SVG)
+
+=== ARQUITECTURA DE COMUNICACIÓN CON EL ESP32 ===
+
+El ESP32-2432S032 opera en modo WiFi Access Point (AP):
+  SSID del ESP32: "HandBeam10D"
+  Contraseña:     "laser2024"
+  IP del ESP32:   192.168.4.1
+  Puerto:         80
+  Protocolo:      HTTP/1.1 con body JSON
+
+El usuario conecta el móvil a la red "HandBeam10D" antes de abrir la app.
+La app detecta si está conectada a esa red WiFi específica antes de habilitar
+los controles de tratamiento. Si no está conectada, muestra la pantalla de
+instrucciones de conexión.
+
+ENDPOINTS que la app debe consumir:
+
+  1. GET  http://192.168.4.1/ping
+     → Verifica conexión. Respuesta: {"ok":true,"dispositivo":"HandBeam10D"}
+
+  2. POST http://192.168.4.1/tratamiento
+     Content-Type: application/json
+     Body: {
+       "tiempo": <int, segundos>,
+       "rojo": <bool>,
+       "violeta": <bool>,
+       "infrarrojo": <bool>,
+       "nm_rojo": 650,
+       "nm_violeta": 405,
+       "nm_infrarrojo": 850,
+       "afeccion": "<string, nombre de la afección>"
+     }
+     Respuesta éxito: {"ok":true,"mensaje":"Tratamiento iniciado"}
+     Respuesta error: {"ok":false,"error":"<descripción>"}
+
+  3. GET  http://192.168.4.1/estado
+     Respuesta: {
+       "estado": "corriendo" | "pausado" | "detenido" | "finalizado",
+       "tiempo_restante": <int, segundos>,
+       "tiempo_total": <int, segundos>,
+       "rojo": <bool>,
+       "violeta": <bool>,
+       "infrarrojo": <bool>
+     }
+
+  4. POST http://192.168.4.1/detener
+     → Detiene el tratamiento en curso.
+
+  5. POST http://192.168.4.1/pausar
+     → Pausa el countdown en el ESP32.
+
+  6. POST http://192.168.4.1/reanudar
+     → Reanuda el countdown pausado.
+
+Implementa un polling cada 2 segundos al endpoint /estado cuando hay un
+tratamiento en curso, para sincronizar el progreso en tiempo real.
+Usa un timeout de 3 segundos en todas las peticiones HTTP.
+Maneja los errores de red con mensajes claros en español al usuario.
+
+=== PANTALLAS Y NAVEGACIÓN ===
+
+La app tiene las siguientes pantallas, con navegación en bottom navigation bar:
+
+PANTALLA 1 — CONEXIÓN (pantalla de bienvenida / splash):
+  Muestra el logo del HandBeam 10D y verifica automáticamente la conexión
+  al ESP32 mediante GET /ping. Si responde, navega directamente al listado
+  de afecciones. Si no responde, muestra instrucciones paso a paso:
+    1. Activar WiFi en el móvil
+    2. Buscar la red "HandBeam10D"
+    3. Conectarse con contraseña "laser2024"
+    4. Regresar a la app
+  Incluye un botón "Reintentar conexión" que vuelve a hacer el ping.
+  Muestra un indicador circular animado mientras verifica.
+
+PANTALLA 2 — CATÁLOGO DE AFECCIONES (pantalla principal):
+  Grid de tarjetas (2 columnas en móvil, 3 en tablet).
+  Cada tarjeta muestra:
+    - Imagen representativa de la afección (usa imágenes de red o assets locales)
+    - Nombre de la afección en español
+    - Badge con los LEDs que se activan (colores: rojo, violeta, infrarrojo)
+    - Duración recomendada del tratamiento
+    - Breve descripción (máximo 2 líneas)
+  Al tocar una tarjeta, navega a la Pantalla 3 (detalle).
+  Incluye barra de búsqueda en la parte superior para filtrar afecciones.
+
+  AFECCIONES A INCLUIR (con sus parámetros clínicos):
+
+  [1] DOLOR ARTICULAR (Artritis / Artrosis)
+      Descripción: La terapia láser reduce la inflamación articular y alivia
+                   el dolor crónico en rodillas, caderas, manos y columna.
+      Tiempo: 300 segundos (5 minutos)
+      Rojo (650nm): SÍ  — Violeta (405nm): NO  — Infrarrojo (850nm): SÍ
+      Imagen_referencia: articulación inflamada / persona con rodilla
+
+  [2] DOLOR MUSCULAR Y CONTRACTURAS
+      Descripción: Acelera la recuperación muscular, reduce la tensión
+                   en contracturas y mejora la circulación local.
+      Tiempo: 240 segundos (4 minutos)
+      Rojo (650nm): SÍ  — Violeta (405nm): NO  — Infrarrojo (850nm): SÍ
+      Imagen_referencia: músculo espalda / cuello tensionado
+
+  [3] CICATRIZACIÓN DE HERIDAS
+      Descripción: Estimula la regeneración celular y acelera el proceso
+                   de cicatrización en heridas superficiales y postquirúrgicas.
+      Tiempo: 180 segundos (3 minutos)
+      Rojo (650nm): SÍ  — Violeta (405nm): SÍ  — Infrarrojo (850nm): NO
+      Imagen_referencia: curación de herida / tejido en reparación
+
+  [4] ACNÉ Y AFECCIONES DÉRMICAS
+      Descripción: La longitud de onda violeta (405nm) tiene efecto
+                   antimicrobiano sobre la bacteria P. acnes. Reduce
+                   inflamación y enrojecimiento de la piel.
+      Tiempo: 180 segundos (3 minutos)
+      Rojo (650nm): NO  — Violeta (405nm): SÍ  — Infrarrojo (850nm): NO
+      Imagen_referencia: piel con acné / tratamiento facial
+
+  [5] NEUROPATÍA Y DOLOR NERVIOSO
+      Descripción: La radiación infrarroja penetra profundamente y estimula
+                   la regeneración nerviosa, reduciendo el dolor por
+                   neuropatías periféricas y neuralgia.
+      Tiempo: 360 segundos (6 minutos)
+      Rojo (650nm): SÍ  — Violeta (405nm): NO  — Infrarrojo (850nm): SÍ
+      Imagen_referencia: sistema nervioso / dolor neurálgico
+
+  [6] TENDINITIS Y LESIONES DE TENDÓN
+      Descripción: Reduce la inflamación del tendón y promueve la
+                   reparación del tejido conectivo en tendinitis,
+                   epicondilitis y fascitis plantar.
+      Tiempo: 300 segundos (5 minutos)
+      Rojo (650nm): SÍ  — Violeta (405nm): NO  — Infrarrojo (850nm): SÍ
+      Imagen_referencia: tendón / pie / codo de tenista
+
+  [7] EDEMA Y RETENCIÓN DE LÍQUIDOS
+      Descripción: Estimula el sistema linfático y mejora la circulación
+                   local, reduciendo el edema y la inflamación por
+                   acumulación de líquido.
+      Tiempo: 240 segundos (4 minutos)
+      Rojo (650nm): SÍ  — Violeta (405nm): NO  — Infrarrojo (850nm): SÍ
+      Imagen_referencia: edema en extremidades / sistema linfático
+
+  [8] ÚLCERAS POR PRESIÓN (Escaras)
+      Descripción: La combinación de rojo e infrarrojo activa la
+                   microcirculación y la proliferación celular en zonas
+                   de presión crónica, favoreciendo la regeneración tisular.
+      Tiempo: 300 segundos (5 minutos)
+      Rojo (650nm): SÍ  — Violeta (405nm): SÍ  — Infrarrojo (850nm): SÍ
+      Imagen_referencia: escaras / úlcera cutánea
+
+  [9] TRATAMIENTO PERSONALIZADO
+      Descripción: Configura manualmente el tiempo y las longitudes de
+                   onda según las indicaciones del profesional de salud.
+      Tiempo: configurable por el usuario (slider 60-600 segundos)
+      Rojo: configurable  — Violeta: configurable  — Infrarrojo: configurable
+      Imagen_referencia: médico con láser / configuración manual
+
+PANTALLA 3 — DETALLE DE AFECCIÓN:
+  Pantalla de detalle al seleccionar una afección. Contiene:
+    - Imagen grande de la afección (parte superior, 40% de la pantalla)
+    - Nombre de la afección (título grande)
+    - Descripción clínica completa (párrafo de texto)
+    - Panel de parámetros del tratamiento con chips de color:
+        Rojo 650nm  [chip rojo] → ACTIVO o INACTIVO
+        Violeta 405nm [chip violeta] → ACTIVO o INACTIVO
+        Infrarrojo 850nm [chip gris/infrarrojo] → ACTIVO o INACTIVO
+    - Duración del tratamiento (ej: "5 minutos — 300 segundos")
+    - Si es "Tratamiento Personalizado", mostrar:
+        Slider para seleccionar tiempo (1–10 minutos, paso de 30 segundos)
+        Switches para activar/desactivar cada LED
+    - Botón grande al final: "INICIAR TRATAMIENTO"
+      → Color: azul médico (#1565C0) o el color primario de la app
+      → Al presionar: muestra diálogo de confirmación, luego envía POST /tratamiento
+      → Si el ESP32 no está conectado: muestra snackbar de error con instrucciones
+    - Indicador de estado de conexión al ESP32 en la esquina superior derecha
+      (ícono verde = conectado, rojo = desconectado)
+
+PANTALLA 4 — TRATAMIENTO EN CURSO (navega automáticamente al iniciar):
+  Muestra en tiempo real el progreso del tratamiento activo:
+    - Nombre de la afección en tratamiento
+    - Ícono grande animado de terapia láser (pulso de luz)
+    - Barra de progreso circular grande con:
+        Tiempo transcurrido
+        Tiempo restante en formato MM:SS (grande, centro)
+        Porcentaje completado
+    - Chips de colores mostrando qué LEDs están activos
+    - Botones: [PAUSAR] y [DETENER]
+      → PAUSAR: envía POST /pausar y el botón cambia a [REANUDAR]
+      → DETENER: muestra diálogo de confirmación → POST /detener → vuelve a catálogo
+    - Al finalizar (tiempo_restante = 0): muestra pantalla de "Tratamiento Completado"
+      con animación de éxito (checkmark verde) y botón "Nuevo tratamiento"
+    - El polling al endpoint /estado se realiza cada 2 segundos para
+      sincronizar el tiempo restante con el contador real del ESP32
+
+PANTALLA 5 — HISTORIAL (tab en bottom nav):
+  Lista de los últimos 20 tratamientos realizados, guardados localmente
+  con shared_preferences. Cada entrada muestra:
+    - Fecha y hora del tratamiento
+    - Nombre de la afección
+    - Duración realizada
+    - LEDs utilizados (chips de color)
+  Botón de "Limpiar historial" en el menú de opciones.
+
+=== DISEÑO VISUAL ===
+
+Estilo: médico profesional, limpio, confiable.
+Paleta de colores:
+  - Primario:    #1565C0 (azul médico)
+  - Secundario:  #E3F2FD (azul muy claro, fondos)
+  - Rojo LED:    #EF5350 (chips y badges del LED rojo)
+  - Violeta LED: #7E57C2 (chips y badges del LED violeta)
+  - IR LED:      #78909C (chips y badges del LED infrarrojo — gris azulado)
+  - Éxito:       #43A047 (verde para confirmaciones)
+  - Error:       #E53935 (rojo para errores)
+  - Texto:       #212121 (negro suave)
+  - Fondo:       #FAFAFA (blanco grisáceo)
+
+Tipografía: Roboto (predeterminada de Flutter Material)
+Iconografía: Material Icons + íconos médicos SVG
+
+El diseño debe ser intuitivo para usuarios no técnicos (pacientes y
+profesionales de salud) con elementos grandes, legibles y con alto contraste.
+
+=== ESTRUCTURA DE ARCHIVOS DEL PROYECTO ===
+
+Organizar el proyecto Flutter así:
+  lib/
+  ├── main.dart
+  ├── models/
+  │   ├── afeccion.dart          (modelo de datos de cada afección)
+  │   └── tratamiento_estado.dart (estado del tratamiento en curso)
+  ├── services/
+  │   └── esp32_service.dart     (toda la lógica HTTP con el ESP32)
+  ├── providers/
+  │   ├── conexion_provider.dart (estado de conexión WiFi)
+  │   └── tratamiento_provider.dart (estado del tratamiento activo)
+  ├── screens/
+  │   ├── conexion_screen.dart
+  │   ├── catalogo_screen.dart
+  │   ├── detalle_screen.dart
+  │   ├── tratamiento_screen.dart
+  │   └── historial_screen.dart
+  ├── widgets/
+  │   ├── afeccion_card.dart
+  │   ├── led_chip.dart
+  │   ├── conexion_indicator.dart
+  │   └── progreso_circular.dart
+  └── data/
+      └── afecciones_data.dart   (lista hardcodeada de las 9 afecciones)
+
+=== CLASE esp32_service.dart — IMPLEMENTACIÓN REQUERIDA ===
+
+Implementa la clase Esp32Service con los siguientes métodos:
+
+  class Esp32Service {
+    static const String _baseUrl = 'http://192.168.4.1';
+    static const Duration _timeout = Duration(seconds: 3);
+
+    // Verifica si el ESP32 está accesible
+    Future<bool> ping() async { ... }
+
+    // Envía los parámetros del tratamiento e inicia
+    Future<Map<String, dynamic>> iniciarTratamiento({
+      required int tiempoSegundos,
+      required bool rojo,
+      required bool violeta,
+      required bool infrarrojo,
+      required String nombreAfeccion,
+    }) async { ... }
+
+    // Consulta el estado actual del tratamiento
+    Future<Map<String, dynamic>> consultarEstado() async { ... }
+
+    // Detiene el tratamiento
+    Future<bool> detener() async { ... }
+
+    // Pausa el tratamiento
+    Future<bool> pausar() async { ... }
+
+    // Reanuda el tratamiento
+    Future<bool> reanudar() async { ... }
+  }
+
+Todos los métodos deben manejar:
+  - TimeoutException si el ESP32 no responde en 3 segundos
+  - SocketException si no hay conexión WiFi
+  - FormatException si la respuesta JSON es inválida
+  - Retornar valores por defecto seguros en caso de error
+
+=== MODELO DE DATOS — afeccion.dart ===
+
+  class Afeccion {
+    final String id;
+    final String nombre;
+    final String descripcion;
+    final String descripcionCorta;
+    final int tiempoSegundos;
+    final bool usaRojo;
+    final bool usaVioleta;
+    final bool usaInfrarrojo;
+    final String imagenUrl;       // URL de imagen de red o path de asset local
+    final bool esPersonalizado;   // true solo para "Tratamiento Personalizado"
+  }
+
+=== REQUISITOS ADICIONALES ===
+
+1. DETECCIÓN DE RED WiFi: Antes de hacer cualquier petición, verificar que
+   el móvil está conectado a la red "HandBeam10D". Si no, mostrar el flujo
+   de instrucciones de conexión. Usar el paquete connectivity_plus para esto.
+
+2. MANEJO DE ESTADO DE APP EN SEGUNDO PLANO: Si la app va al background
+   durante un tratamiento, mantener el polling activo y mostrar una
+   notificación local con el tiempo restante.
+
+3. ORIENTACIÓN: La app funciona SOLO en orientación vertical (portrait).
+   Bloquear con SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]).
+
+4. ACCESIBILIDAD: Todos los botones deben tener Semantics labels en español.
+   El tamaño mínimo de área táctil es 48x48 dp.
+
+5. VALIDACIONES: No permitir iniciar un tratamiento si ningún LED está
+   seleccionado. No permitir tiempo menor a 30 segundos. Mostrar error
+   descriptivo en cada caso.
+
+6. IDIOMA: Toda la interfaz debe estar en español. Los mensajes de error
+   del HTTP también deben traducirse a español antes de mostrarse al usuario.
+
+=== CÓDIGO DEL FIRMWARE ESP32 QUE DEBES GENERAR TAMBIÉN ===
+
+Además de la app Flutter, genera el código Arduino/C++ completo para el
+firmware del ESP32 que implemente el servidor HTTP descrito. El firmware debe:
+
+1. Configurar WiFi en modo AP con SSID "HandBeam10D" y password "laser2024"
+2. Arrancar un servidor HTTP en el puerto 80
+3. Responder los 6 endpoints descritos con JSON válido
+4. Integrar con el sistema de variables globales de LVGL/EEZ Studio ya
+   existente en el proyecto (variables: is_running, treatment_time, check_R,
+   check_V, check_IR, show_notification, notification_text)
+5. Cuando recibe POST /tratamiento:
+   - Actualizar las variables: check_R, check_V, check_IR, treatment_time
+   - Establecer is_running = true
+   - Actualizar notification_text con el nombre de la afección
+   - Activar show_notification por 2 segundos
+6. Cuando recibe POST /detener: is_running = false, treatment_time = 0
+7. Cuando recibe POST /pausar: is_running = false (sin resetear el tiempo)
+8. Cuando recibe POST /reanudar: is_running = true
+9. GET /estado devuelve el estado actual de todas las variables relevantes
+10. Permitir CORS en todas las respuestas para evitar errores de política
+
+El servidor HTTP debe funcionar en un FreeRTOS task separado (Core 0) para
+no interferir con el rendering de LVGL que corre en Core 1.
+Usar la librería WiFi.h nativa del ESP32 Arduino Core 3.3.5.
+
+=== ENTREGABLES ESPERADOS ===
+
+Al completar el desarrollo, debes proporcionar:
+  1. Código fuente completo del proyecto Flutter (todos los archivos .dart)
+  2. pubspec.yaml con todas las dependencias
+  3. Archivo de firmware ESP32 (wifi_server.h o wifi_server.cpp) para integrar
+     al proyecto Arduino existente sin reemplazar los archivos de EEZ Studio
+  4. Instrucciones de instalación y configuración paso a paso
+
+================================================================================
+FIN DEL PROMPT
+================================================================================
+
+NOTAS DE USO:
+- Este prompt está optimizado para Claude (Anthropic) o GPT-4 con contexto largo.
+- Si el modelo lo trunca, divide el prompt en 2 partes: primero el contexto de
+  hardware y protocolo, luego las pantallas y requisitos.
+- Para obtener el firmware del ESP32, pega el prompt en una segunda sesión
+  incluyendo el código actual de test.ino como contexto adicional.
+

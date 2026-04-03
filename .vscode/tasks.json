@@ -1,0 +1,52 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Arduino Compile",
+			"type": "shell",
+			"command": "C:\\Users\\DANNY\\.vscode\\extensions\\vscode-arduino.vscode-arduino-community-0.7.2-win32-x64\\assets\\platform\\win32-x64\\arduino-cli\\arduino-cli.exe",
+			"args": [
+				"compile",
+				"--fqbn",
+				"esp32:esp32:esp32",
+				"--build-path",
+				"${workspaceFolder}\\build",
+				"${workspaceFolder}\\test"
+			],
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Arduino Compile CMD",
+			"type": "shell",
+			"command": "cmd.exe",
+			"args": [
+				"/c",
+				"\"C:\\Users\\DANNY\\.vscode\\extensions\\vscode-arduino.vscode-arduino-community-0.7.2-win32-x64\\assets\\platform\\win32-x64\\arduino-cli\\arduino-cli.exe\" compile --fqbn esp32:esp32:esp32 --build-path \"${workspaceFolder}\\build\" \"${workspaceFolder}\\test\""
+			],
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		},
+		{
+			"label": "Compile ESP32 LVGL9",
+			"type": "shell",
+			"command": "C:\\Users\\DANNY\\.vscode\\extensions\\vscode-arduino.vscode-arduino-community-0.7.2-win32-x64\\assets\\platform\\win32-x64\\arduino-cli\\arduino-cli.exe",
+			"args": [
+				"compile",
+				"--fqbn",
+				"esp32:esp32:esp32",
+				"--build-path",
+				"C:\\Users\\DANNY\\Desktop\\Laser Inteligente\\build",
+				"C:\\Users\\DANNY\\Desktop\\Laser Inteligente\\test"
+			],
+			"problemMatcher": [
+				"$gcc"
+			],
+			"group": "build"
+		}
+	]
+}
