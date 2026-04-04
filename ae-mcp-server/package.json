@@ -1,0 +1,17 @@
+{
+  "name": "ae-mcp-server",
+  "version": "1.0.0",
+  "description": "MCP Server to control Adobe After Effects from Claude Code",
+  "type": "module",
+  "main": "index.js",
+  "bin": {
+    "ae-mcp-server": "index.js"
+  },
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "1.26.0",
+    "zod": "3.24.2"
+  }
+}
